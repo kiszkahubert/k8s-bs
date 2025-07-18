@@ -21,7 +21,7 @@ spec:
               sleep 5;
             done
         volumeMounts:
-        - name: emptydir-volume
+        - name: pvc-volume
           mountPath: /logs
         resources:
           limits:
@@ -33,5 +33,6 @@ spec:
         ports:
         - containerPort: 2000
       volumes:
-      - name: emptydir-volume
-        emptyDir: {}
+      - name: pvc-volume
+        persistentVolumeClaim:
+          claimName: example-pvc
